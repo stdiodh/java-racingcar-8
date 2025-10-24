@@ -1,4 +1,38 @@
 package racingcar.domain;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class Cars {
+    private static final int MIN_CARS_COUNT = 2;
+    private static final String ERROR_MIN_CARS = "[ERROR] 자동차는 2대 이상 참여해야 합니다.";
+    private static final String ERROR_DUPLICATE_NAMES = "[ERROR] 자동차 이름은 중복될 수 없습니다.";
+
+    private final List<Car> cars;
+
+    public Cars(List<Car> cars) {
+        validate(cars);
+        this.cars = cars;
+    }
+
+    private void validate(List<Car> cars) {
+        validateSize(cars);
+        validateUniqueness(cars);
+    }
+
+    private void validateSize(List<Car> cars) {
+        if (cars.size() < MIN_CARS_COUNT) {
+            throw new IllegalArgumentException(ERROR_MIN_CARS);
+        }
+    }
+
+    private void validateUniqueness(List<Car> cars) {
+        Set<String> names = new HashSet<>();
+        for (Car car : cars) {
+            if(!names.add(car.getNameValue())) {
+                throw new IllegalArgumentException(ERROR_DUPLICATE_NAMES);
+            }
+        }
+    }
 }
