@@ -7,4 +7,12 @@ public class Position {
     public Position() {
         this.value = INITIAL_POSITION;
     }
+
+    public void increase() {
+        this.value++;
+    }
+
+    public int getValue() {
+        return value;
+    }
 }

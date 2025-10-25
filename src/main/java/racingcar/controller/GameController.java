@@ -17,14 +17,17 @@ public class GameController {
 
     public void run() {
         setupGame();
+        playGame();
     }
 
     private void setupGame() {
-        outputView.printCarNamePrompt();
-        String rawName = inputView.readInput();
-        outputView.printTryCountPrompt();
-        String rawCount = inputView.readInput();
+        String rawName = inputView.readCarNames();
+        String rawCount = inputView.readTryCount();
 
         racingGame.setupGame(rawName, rawCount);
+    }
+
+    private void playGame() {
+        racingGame.playRace(outputView);
     }
 }

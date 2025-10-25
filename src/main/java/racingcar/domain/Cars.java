@@ -3,6 +3,7 @@ package racingcar.domain;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.function.IntSupplier;
 
 public class Cars {
     private static final int MIN_CARS_COUNT = 2;
@@ -34,5 +35,18 @@ public class Cars {
                 throw new IllegalArgumentException(ERROR_DUPLICATE_NAMES);
             }
         }
+    }
+
+    public void playRound(IntSupplier numberProvider) {
+        for(Car car : cars) {
+            int randomNumber = numberProvider.getAsInt();
+            car.move(randomNumber);
+        }
+    }
+
+    public List<Car.CarStatus> getStatuses() {
+        return cars.stream()
+                .map(Car::getStatus)
+                .toList();
     }
 }

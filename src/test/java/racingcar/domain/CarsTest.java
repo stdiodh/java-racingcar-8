@@ -2,8 +2,10 @@ package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
+import java.util.function.IntSupplier;
 import org.junit.jupiter.api.Test;
 
 public class CarsTest {
@@ -39,5 +41,29 @@ public class CarsTest {
         assertThatThrownBy(() -> new Cars(carList))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR] 자동차 이름은 중복될 수 없습니다.");
+    }
+
+    @Test
+    void playRound_실행_테스트() {
+        Car pobi = new Car(new Name("pobi"));
+        Car woni = new Car(new Name("woni"));
+        Cars cars = new Cars(List.of(pobi, woni));
+
+        IntSupplier fakeProvider = new IntSupplier() {
+            private int count = 0;
+            @Override
+            public int getAsInt() {
+                if (count == 0) {
+                    count++;
+                    return 4;
+                }
+                return 3;
+            }
+        };
+
+        cars.playRound(fakeProvider);
+
+        assertThat(pobi.getStatus().position()).isEqualTo(1);
+        assertThat(woni.getStatus().position()).isEqualTo(0);
     }
 }
