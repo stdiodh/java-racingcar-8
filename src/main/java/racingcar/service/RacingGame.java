@@ -27,7 +27,7 @@ public class RacingGame {
 
     public void playRace(OutputView outputView) {
         outputView.printResultMessage();
-        for (int i = 0; i < tryCount.getValue(); i++) {
+        for (int i = 0; i < tryCount.value(); i++) {
             cars.playRound(numberProvider);
             List<CarStatus> statuses = cars.getStatuses();
             outputView.printRoundStatus(statuses);

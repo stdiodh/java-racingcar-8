@@ -11,7 +11,7 @@ public class Car {
     }
 
     public String getNameValue() {
-        return name.getValue();
+        return name.value();
     }
 
     public Position getPosition() {
@@ -28,6 +28,6 @@ public class Car {
     }
 
     public CarStatus getStatus() {
-        return new CarStatus(name.getValue(), position.getValue());
+        return new CarStatus(name.value(), position.getValue());
     }
 }

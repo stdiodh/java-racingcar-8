@@ -43,7 +43,7 @@ public class InputServiceTest {
     void 시도_횟수_파싱_성공_테스트() {
         String rawCount = "5";
 
-        assertThat(inputService.createTryCountFromInput(rawCount).getValue()).isEqualTo(5);
+        assertThat(inputService.createTryCountFromInput(rawCount).value()).isEqualTo(5);
     }
 
     @Test
