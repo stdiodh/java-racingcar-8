@@ -24,7 +24,7 @@ public class Car {
         }
     }
 
-    public record CarStatus(String name, int position){
+    public record CarStatus(String name, int position) {
     }
 
     public CarStatus getStatus() {

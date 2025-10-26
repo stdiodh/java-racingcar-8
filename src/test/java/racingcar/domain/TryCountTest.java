@@ -7,7 +7,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 public class TryCountTest {
-
     @ParameterizedTest
     @ValueSource(ints = {1, 5, 1000})
     void 시도_횟수_생성_테스트(int validValue) {

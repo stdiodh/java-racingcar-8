@@ -31,14 +31,14 @@ public class Cars {
     private void validateUniqueness(List<Car> cars) {
         Set<String> names = new HashSet<>();
         for (Car car : cars) {
-            if(!names.add(car.getNameValue())) {
+            if (!names.add(car.getNameValue())) {
                 throw new IllegalArgumentException(ERROR_DUPLICATE_NAMES);
             }
         }
     }
 
     public void playRound(IntSupplier numberProvider) {
-        for(Car car : cars) {
+        for (Car car : cars) {
             int randomNumber = numberProvider.getAsInt();
             car.move(randomNumber);
         }
