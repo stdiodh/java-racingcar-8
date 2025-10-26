@@ -14,6 +14,10 @@ public class Car {
         return name.getValue();
     }
 
+    public Position getPosition() {
+        return position;
+    }
+
     public void move(int number) {
         if (number >= MOVE_THRESHOLD) {
             position.increase();

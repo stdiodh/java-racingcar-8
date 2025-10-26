@@ -33,4 +33,8 @@ public class RacingGame {
             outputView.printRoundStatus(statuses);
         }
     }
+
+    public List<String> getWinners() {
+        return cars.findWinners();
+    }
 }

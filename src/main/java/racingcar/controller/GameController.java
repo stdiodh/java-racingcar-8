@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import java.util.List;
 import racingcar.service.RacingGame;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -18,6 +19,7 @@ public class GameController {
     public void run() {
         setupGame();
         playGame();
+        gameResult();
     }
 
     private void setupGame() {
@@ -29,5 +31,10 @@ public class GameController {
 
     private void playGame() {
         racingGame.playRace(outputView);
+    }
+
+    public void gameResult() {
+        List<String> winners = racingGame.getWinners();
+        outputView.printWinners(winners);
     }
 }

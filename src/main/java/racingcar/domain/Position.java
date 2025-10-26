@@ -15,4 +15,12 @@ public class Position {
     public int getValue() {
         return value;
     }
+
+    public boolean isGreaterThan(Position other) {
+        return this.value > other.value;
+    }
+
+    public boolean isSameAs(Position other) {
+        return this.value == other.value;
+    }
 }

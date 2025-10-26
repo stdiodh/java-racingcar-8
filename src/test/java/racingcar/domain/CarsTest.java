@@ -66,4 +66,37 @@ public class CarsTest {
         assertThat(pobi.getStatus().position()).isEqualTo(1);
         assertThat(woni.getStatus().position()).isEqualTo(0);
     }
+
+    @Test
+    void 단독_우승자_판별_테스트() {
+        Car pobi = new Car(new Name("pobi"));
+        Car woni = new Car(new Name("woni"));
+        Cars cars = new Cars(List.of(pobi, woni));
+
+        IntSupplier fakeProvider = () -> 4;
+        pobi.move(fakeProvider.getAsInt());
+
+        fakeProvider = () -> 3;
+        woni.move(fakeProvider.getAsInt());
+
+        List<String> winners = cars.findWinners();
+
+        assertThat(winners).containsExactly("pobi");
+    }
+
+    @Test
+    void 공동_우승자_판별_테스트() {
+        Car pobi = new Car(new Name("pobi"));
+        Car woni = new Car(new Name("woni"));
+        Car jun = new Car(new Name("jun"));
+        Cars cars = new Cars(List.of(pobi, woni, jun));
+
+        pobi.move(4);
+        woni.move(3);
+        jun.move(4);
+
+        List<String> winners = cars.findWinners();
+
+        assertThat(winners).containsExactlyInAnyOrder("pobi", "jun");
+    }
 }

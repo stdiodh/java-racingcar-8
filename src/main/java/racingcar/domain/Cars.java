@@ -49,4 +49,25 @@ public class Cars {
                 .map(Car::getStatus)
                 .toList();
     }
+
+    public List<String> findWinners() {
+        Position maxPosition = findMaxPosition();
+
+        return cars.stream()
+                .filter(car -> car.getPosition().isSameAs(maxPosition))
+                .map(Car::getNameValue)
+                .toList();
+    }
+
+    private Position findMaxPosition() {
+        Position maxPosition = new Position();
+
+        for (Car car : cars) {
+            if (car.getPosition().isGreaterThan(maxPosition)) {
+                maxPosition = car.getPosition();
+            }
+        }
+
+        return maxPosition;
+    }
 }
