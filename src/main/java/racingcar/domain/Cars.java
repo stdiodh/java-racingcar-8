@@ -54,7 +54,7 @@ public class Cars {
         Position maxPosition = findMaxPosition();
 
         return cars.stream()
-                .filter(car -> car.getPosition().isSameAs(maxPosition))
+                .filter(car -> car.hasSamePositionAs(maxPosition))
                 .map(Car::getNameValue)
                 .toList();
     }
@@ -63,7 +63,7 @@ public class Cars {
         Position maxPosition = new Position();
 
         for (Car car : cars) {
-            if (car.getPosition().isGreaterThan(maxPosition)) {
+            if (car.isAheadOf(maxPosition)) {
                 maxPosition = car.getPosition();
             }
         }

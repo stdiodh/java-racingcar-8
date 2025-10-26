@@ -30,4 +30,12 @@ public class Car {
     public CarStatus getStatus() {
         return new CarStatus(name.value(), position.getValue());
     }
+
+    public boolean isAheadOf(Position otherPosition) {
+        return this.position.isGreaterThan(otherPosition);
+    }
+
+    public boolean hasSamePositionAs(Position otherPosition) {
+        return this.position.isSameAs(otherPosition);
+    }
 }
