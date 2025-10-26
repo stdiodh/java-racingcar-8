@@ -3,7 +3,7 @@ package racingcar.domain;
 public class Car {
     private final Name name;
     private final Position position;
-    private static final int MOVE_THRESHOLD = 4;
+    private static final int MOVING_FORWARD = 4;
 
     public Car(Name name) {
         this.name = name;
@@ -19,7 +19,7 @@ public class Car {
     }
 
     public void move(int number) {
-        if (number >= MOVE_THRESHOLD) {
+        if (number >= MOVING_FORWARD) {
             position.increase();
         }
     }
